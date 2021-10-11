@@ -1,0 +1,27 @@
+{
+  "name": "express-portfolio-site",
+  "version": "1.0.0",
+  "description": "COMP229– Web Application Development - Assignment 1",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nafrin-Ilma/express-portfolio-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nafrin-Ilma/express-portfolio-site/issues"
+  },
+  "homepage": "https://github.com/Nafrin-Ilma/express-portfolio-site#readme"
+}
