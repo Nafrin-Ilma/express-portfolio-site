@@ -6,7 +6,7 @@ app.set('view engine', 'ejs');
 
 // get routes index page
 app.get('/', (req, res, next) => {
-    res.render('public/views/index')
+    res.render('index')
 })
 
 app.listen(4200)
