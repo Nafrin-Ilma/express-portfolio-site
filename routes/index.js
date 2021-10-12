@@ -18,7 +18,7 @@ router.get('/about', function(req, res, next) {
   { title: 'About' });
 });
 
-/* GET products page. */
+/* GET projects page. */
 router.get('/projects', function(req, res, next) {
   res.render('projects', 
   { title: 'Projects' });
@@ -30,7 +30,7 @@ router.get('/services', function(req, res, next) {
   { title: 'Services' });
 });
 
-/* GET contact us page. */
+/* GET contact me page. */
 router.get('/contact', function(req, res, next) {
   res.render('contact', 
   { title: 'Contact' });
