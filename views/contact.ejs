@@ -9,6 +9,44 @@
 </head>
 <body>
     <%- include('partials/header') %> 
+    <!-- Main Content -->
+    <main>
+        <div class="card-body">
+            <div class="alert alert-success" role="alert">
+                Contact me!
+            </div>
+            <div class="row mb-3">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form_container">
+                                <h3>Want to get in touch?</h3>
+                                <p>
+                                    Send us a message and we'll get back to you soon!
+                                </p>
+                                <form action="">
+                                    <input id="fname" class="name" type="text" placeholder="First name" required>
+                                
+                                    <input id="lname" input class="name" type="text" placeholder="Last name" required><br>
+                                
+                                    <input id="email" input type="email" placeholder="Email" required><br>
+                                
+                                    <input id="phone" input type="tel" placeholder="Phone"><br>
+                                
+                                    <input id="message" input type="textarea" placeholder="Message" required><br>
+                                    <button class="submit" type="sumbit" >Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
     <%- include('partials/footer') %> 
 </body>
 </html>
