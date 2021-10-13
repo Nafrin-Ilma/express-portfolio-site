@@ -18,7 +18,7 @@ app.get('/', (req, res, next) => {
     res.render('index');
 });
 
-const  viewRoutes = require('./routes/index');
+const viewRoutes = require('./public/javascripts/index');
 
 app.use('/', viewRoutes);
 
