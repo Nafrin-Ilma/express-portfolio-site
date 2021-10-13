@@ -22,4 +22,4 @@ const viewRoutes = require('./public/javascripts/index');
 
 app.use('/', viewRoutes);
 
-app.listen(4200);
+app.listen(process.env.PORT || 4200);
