@@ -5,8 +5,13 @@
     Date: 11/10/2021
 */
 
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+
+// // modules for authentication
+// let session = require('express-session');
+// let passport = require('passport');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -44,3 +49,27 @@ router.get('/contact-me', function(req, res, next) {
 });
 
 module.exports = router;
+
+// //setup express session
+// app.use(session({
+//   secret: "SomeSecret",
+//   saveUninitialized: false,
+//   resave: false
+// }));
+
+// // initialize passport
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+// // passport user configuration
+
+// // create a User Model Instance
+// let userModel = require('../models/user');
+// let User = userModel.User;
+
+// // implement a User Authentication Strategy
+// passport.use(User.createStrategy());
+
+// // serialize and deserialize the User info
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
