@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <%- include('partials/basicStyles') %>
+        <title><%= locals.title %> </title>
+    </head>
+    <body>
+        <main>
+            <div class="card-body text-center">
+                <div class="container">
+                    <div class="row" style="justify-content: center;">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header" style="border-bottom: 0;">
+                                    <img src="images/user.png" alt="Login Image" width="180px">
+                                    <h4 class="mb-3">Login</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form action="/login" method="post">
+                                        <div class="form-row">
+                                            <div class="form-group mb-2">
+                                                <label for="username">User name: </label>
+                                                <input type="text" id="username" name="username" required>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="password">Password: </label>&nbsp;&nbsp;
+                                                <input type="text" id="password" name="password" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-sm btn-primary">Login</button>
+                                        </div>
+                                    </form>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
