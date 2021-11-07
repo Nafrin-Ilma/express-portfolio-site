@@ -10,6 +10,19 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+// db setup
+const mongoose = require('mongoose');
+const DB = require('./db');
+
+// point mongoose to DB
+mongoose.connect(DB.URI);
+
+let mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'Connection Error: '));
+mongoDB.once('open', () => {
+    console.log('Connection is successful!');
+});
+
 const app = express();
 
 // get static files
@@ -17,28 +30,32 @@ app.use(express.static('public'));
 
 // set view engine
 app.set('view engine', 'ejs');
+
+app.use(logger('dev'));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser);
 
 // get routes index page
 app.get('/', (req, res, next) => {
     res.render('index');
 });
 
-app.post('/login', function(req, res) {
+app.post('/login', (req, res) => {
     res.render('login');
-  });
+});
 
 const viewRoutes = require('./public/javascripts/index');
 
 app.use('/', viewRoutes);
 
 // catch 404
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 

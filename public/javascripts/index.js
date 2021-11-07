@@ -48,6 +48,30 @@ router.get('/contact-me', function(req, res, next) {
   { title: 'Contact' });
 });
 
+/* GET error page */
+router.get('/404', function(req, res, next) {
+  res.render('error', 
+  { title: 'Error' });
+});
+
+/* GET login page */
+router.get('/login', function(req, res, next) {
+  res.render('login', 
+  { title: 'Login' });
+});
+
+/* GET contact lists page */
+router.get('/get-contacts', function(req, res, next) {
+  res.render('contactsList', 
+  { title: 'Contacts List' });
+});
+
+/* GET update contact page */
+router.get('/update-contact', function(req, res, next) {
+  res.render('updateContact', 
+  { title: 'Update Contact' });
+});
+
 module.exports = router;
 
 // //setup express session
