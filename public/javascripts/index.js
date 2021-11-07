@@ -5,8 +5,12 @@
     Date: 11/10/2021
 */
 
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const contactLists = require('../../models/contactLists');
+
+let ContactLists = require('../../models/contactLists')
 
 // // modules for authentication
 // let session = require('express-session');
@@ -61,16 +65,68 @@ router.get('/login', function(req, res, next) {
 });
 
 /* GET contact lists page */
-router.get('/get-contacts', function(req, res, next) {
-  res.render('contactsList', 
-  { title: 'Contacts List' });
+router.get('/get-contacts', (req, res, next) => {
+  ContactLists.find((error, contactList) => {
+    if (error) {
+      return console.error(error);
+    } else {
+      console.log(contactList)
+      res.render('contactsList', 
+      { title: 'Contacts List' , ContactList: contactList.sort((a, b) => a.username.toLowerCase() < b.username.toLowerCase() ? -1 : 1)});
+    }
+  });
 });
 
 /* GET update contact page */
-router.get('/update-contact', function(req, res, next) {
-  res.render('updateContact', 
-  { title: 'Update Contact' });
+router.get('/update-contact/:id', function(req, res, next) {
+  let id = req.params.id;
+
+  ContactLists.findById(id, (err, contactToEdit) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      res.render('updateContact', 
+      { title: 'Update Contact', contact: contactToEdit });
+    }
+  })
 });
+
+/* POST update contact page */
+router.post('/update-contact/:id', (req, res, next) => {
+  const id = req.params.id;
+
+  const updateContact = ContactLists({
+    "username": req.body.username,
+    "password": req.body.password,
+    "email_address": req.body.email_address,
+    "contact_name": req.body.contact_name,
+    "contact_number": req.body.contact_number
+  });
+
+  ContactLists.updateOne({_id: id}, updateContact, (error) => {
+    if (error) {
+      console.log(error);
+      res.end(error);
+    } else {
+      res.redirect('/get-contacts');
+    }
+  })
+});
+
+/* DELETE function */
+router.get('/delete/:id', (req, res, next) => {
+  const id = req.params.id;
+
+  ContactLists.remove({_id: id}, (error) => {
+    if (error) {
+      console.log(error);
+      res.end(error);
+    } else {
+      res.redirect('/get-contacts');
+    }
+  })
+})
 
 module.exports = router;
 
