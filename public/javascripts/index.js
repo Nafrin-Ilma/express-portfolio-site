@@ -8,7 +8,6 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const contactLists = require('../../models/contactLists');
 
 let ContactLists = require('../../models/contactLists')
 
